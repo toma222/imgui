@@ -13933,6 +13933,16 @@ void ImGui::ShowMetricsWindow(bool* p_open)
         TreePop();
     }
 
+    // Details for MultiSelect
+    SetNextItemOpen(true, ImGuiCond_Once);
+    if (TreeNode("MultiSelect", "MultiSelect (%d)", g.MultiSelectStorage.GetAliveCount()))
+    {
+        for (int n = 0; n < g.MultiSelectStorage.GetMapSize(); n++)
+            if (ImGuiMultiSelectState* state = g.MultiSelectStorage.TryGetMapData(n))
+                DebugNodeMultiSelectState(state);
+        TreePop();
+    }
+
     // Details for Docking
 #ifdef IMGUI_HAS_DOCK
     if (TreeNode("Docking"))
