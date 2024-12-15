@@ -4,9 +4,6 @@ project "ImGui"
 	language "C++"
 	staticruntime "off"
 
-    targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
-
 	files
 	{
 		"*.cpp",
@@ -15,7 +12,6 @@ project "ImGui"
 		-- "backends/imgui_impl_vulkan.cpp",
         "backends/imgui_impl_opengl3.cpp"
 		"backends/imgui_impl_glfw.cpp",
-        "%{IncludeDir.VulkanSDK}",
 	}
 
 	includedirs
